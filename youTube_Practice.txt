@@ -1,0 +1,20 @@
+image slider box -> carousel
+expo location -> location
+
+<======= ERROR HANDLING =========>
+1. viewPropTypes error: 
+	yarn add deprecated-react-native-prop-types
+	Add these lines in node_modules/react-native/index.js, in line no. ~400 near 
+	// Deprecated Prop Types
+  	get ColorPropType(): $FlowFixMe{
+    		return require('deprecated-react-native-prop-types').ColorPropType;
+  	},
+  	get EdgeInsetsPropType(): $FlowFixMe{
+    		return require('deprecated-react-native-prop-types').EdgeInsetsPropType;
+  	},
+  	get PointPropType(): $FlowFixMe{
+    		return require('deprecated-react-native-prop-types').PointPropType;
+  	},
+  	get ViewPropTypes(): $FlowFixMe{
+    		return require('deprecated-react-native-prop-types').ViewPropTypes;
+  	},
