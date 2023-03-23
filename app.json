@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/freshLaundry.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anubhavraj729.laundryapp"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/freshLaundry.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ee387daf-79d3-429e-8cf4-b2b50369fba5"
+      }
     }
   }
 }
