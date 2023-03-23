@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, KeyboardAvoidingView, TextInput, Pressable, ActivityIndicator } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, KeyboardAvoidingView, TextInput, Pressable, ActivityIndicator, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
@@ -28,9 +28,9 @@ const LoginScreen = () => {
 
   const login = () => {
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      console.log("user credential", userCredential);
+      // console.log("user credential", userCredential);
       const user = userCredential.user;
-      console.log("user details", user)
+      // console.log("user details", user)
     })
   }
 

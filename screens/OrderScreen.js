@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
 import LottieView from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const OrderScreen = () => {
+const OrderScreen = () => { 
+  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <LottieView 
@@ -33,6 +35,20 @@ const OrderScreen = () => {
           loop={false}
           speed={0.7} 
         />
+      <Pressable 
+        onPress={() => navigation.navigate("Home")}
+        style={{
+          width: 200,
+          backgroundColor: "#318CE7",
+          padding: 15,
+          marginTop: 60,
+          borderRadius: 7,
+          marginLeft: "auto",
+          marginRight: "auto"
+        }}
+      >
+      <Text style={{ fontSize: 18, textAlign: "center", color: "white" }}>Home</Text>
+    </Pressable>
     </SafeAreaView>
   )
 }

@@ -17,14 +17,26 @@ const ProfileScreen = () => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center"}}>
-      <Pressable style={{marginVertical: 10}}>
-        <Text>Welcome {user.email}</Text>
+    <SafeAreaView style={{ flex: 1, alignItems: "center", marginTop: 35}}>
+      <Pressable style={{marginVertical: 10, alignItems: "center"}}>
+        <Text style={{fontSize: 20, }}>Welcome</Text>
+        <Text style={{fontWeight: "600", fontSize: 25}}>{user.email}</Text>
       </Pressable>
       
-      <Pressable onPress={signOutUser}>
-        <Text>Sign Out</Text>
-      </Pressable>
+      <Pressable 
+        onPress={signOutUser}
+        style={{
+          width: 200,
+          backgroundColor: "#318CE7",
+          padding: 15,
+          marginTop: 60,
+          borderRadius: 7,
+          marginLeft: "auto",
+          marginRight: "auto"
+        }}  
+      >
+                <Text style={{ fontSize: 17, textAlign:"center", fontWeight: "500", color: "white" }}>Sign Out</Text>
+              </Pressable>
     </SafeAreaView>
   )
 }

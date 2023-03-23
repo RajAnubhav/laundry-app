@@ -25,7 +25,7 @@ import { db } from '../firebase';
 const HomeScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   const [items, setItems] = useState([]);
-  const total = cart.map((item)=>item.quantity * item.price).reduce((curr, prev)=>curr+prev, 0);
+  const total = cart.map((item) => item.quantity * item.price).reduce((curr, prev) => curr + prev, 0);
   const navigation = useNavigation();
 
   const [displayCurrentAddress, setdisplayCurrentAddress] = useState("Loading your location...");
@@ -90,70 +90,70 @@ const HomeScreen = () => {
   useEffect(() => {
     if (product.length > 0) return;
 
-    const fetchProducts = async() => {
+    const fetchProducts = async () => {
       const colRef = collection(db, "types");
       const docsSnap = await getDocs(colRef);
-      docsSnap.forEach((doc)=>{
+      docsSnap.forEach((doc) => {
         items.push(doc.data());
       });
-      items?.map((service)=>dispatch(getProducts(service)));
+      items?.map((service) => dispatch(getProducts(service)));
     };
     fetchProducts();
   }, [])
-  console.log(product)
+  // console.log(product)
 
   // products data {dummy data}
-// const services = [
-//   {
-//     id: "0",
-//     image: "https://cdn-icons-png.flaticon.com/128/4643/4643574.png",
-//     name: "shirt",
-//     quantity: 0,
-//     price: 10,
-//   },
-//   {
-//     id: "11",
-//     image: "https://cdn-icons-png.flaticon.com/128/892/892458.png",
-//     name: "T-shirt",
-//     quantity: 0,
-//     price: 10,
-//   },
-//   {
-//     id: "12",
-//     image: "https://cdn-icons-png.flaticon.com/128/9609/9609161.png",
-//     name: "dresses",
-//     quantity: 0,
-//     price: 10,
-//   },
-//   {
-//     id: "13",
-//     image: "https://cdn-icons-png.flaticon.com/128/599/599388.png",
-//     name: "jeans",
-//     quantity: 0,
-//     price: 10,
-//   },
-//   {
-//     id: "14",
-//     image: "https://cdn-icons-png.flaticon.com/128/9431/9431166.png",
-//     name: "Sweater",
-//     quantity: 0,
-//     price: 10,
-//   },
-//   {
-//     id: "15",
-//     image: "https://cdn-icons-png.flaticon.com/128/3345/3345397.png",
-//     name: "shorts",
-//     quantity: 0,
-//     price: 10,
-//   },
-//   {
-//     id: "16",
-//     image: "https://cdn-icons-png.flaticon.com/128/293/293241.png",
-//     name: "Sleeveless",
-//     quantity: 0,
-//     price: 10,
-//   },
-// ];
+  // const services = [
+  //   {
+  //     id: "0",
+  //     image: "https://cdn-icons-png.flaticon.com/128/4643/4643574.png",
+  //     name: "shirt",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  //   {
+  //     id: "11",
+  //     image: "https://cdn-icons-png.flaticon.com/128/892/892458.png",
+  //     name: "T-shirt",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  //   {
+  //     id: "12",
+  //     image: "https://cdn-icons-png.flaticon.com/128/9609/9609161.png",
+  //     name: "dresses",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  //   {
+  //     id: "13",
+  //     image: "https://cdn-icons-png.flaticon.com/128/599/599388.png",
+  //     name: "jeans",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  //   {
+  //     id: "14",
+  //     image: "https://cdn-icons-png.flaticon.com/128/9431/9431166.png",
+  //     name: "Sweater",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  //   {
+  //     id: "15",
+  //     image: "https://cdn-icons-png.flaticon.com/128/3345/3345397.png",
+  //     name: "shorts",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  //   {
+  //     id: "16",
+  //     image: "https://cdn-icons-png.flaticon.com/128/293/293241.png",
+  //     name: "Sleeveless",
+  //     quantity: 0,
+  //     price: 10,
+  //   },
+  // ];
 
   return (
     <>
@@ -164,12 +164,12 @@ const HomeScreen = () => {
             <Text style={{ fontSize: 18, fontWeight: "800" }}>Home</Text>
             <Text>{displayCurrentAddress}</Text>
           </View>
-          <Pressable onPress={()=>navigation.navigate("Profile")} style={{ marginLeft: 'auto', marginRight: 15 }}>
-            <Image 
-              style={{ width: 40, height: 40, borderRadius: 20 }} 
-              source={{ 
-                uri: "https://lh3.googleusercontent.com/ogw/AAEL6si3Mg5p8vpCmhJhSnm-xUZWa2auJFBE7o9DVmD80A=s32-c-mo" 
-              }} 
+          <Pressable onPress={() => navigation.navigate("Profile")} style={{ marginLeft: 'auto', marginRight: 15 }}>
+            <Image
+              style={{ width: 40, height: 40, borderRadius: 20 }}
+              source={{
+                uri: "https://lh3.googleusercontent.com/ogw/AAEL6si3Mg5p8vpCmhJhSnm-xUZWa2auJFBE7o9DVmD80A=s32-c-mo"
+              }}
             />
           </Pressable>
         </View>
@@ -208,26 +208,26 @@ const HomeScreen = () => {
         total === 0 ? (
           null
         ) : (
-        <Pressable 
-          style={{ 
-            backgroundColor: "#088F8F", 
-            padding: 10, 
-            marginBottom: 40, 
-            margin: 15, 
-            borderRadius: 7, 
-            flexDirection: "row", 
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <View>
-            <Text style={{fontSize: 15, fontWeight: "500", color: "white"}}>{cart.length} items |  ${total}</Text>
-            <Text style={{fontSize: 14, fontWeight: "400", color: "white", marginVertical: 6}}>Extra charges might apply</Text>
-          </View>
-          <Pressable onPress={()=>navigation.navigate("PickUp")}>
-            <Text style={{fontSize: 17, fontWeight: "600", color: "white"}}>Proceed to pickup</Text>
+          <Pressable
+            style={{
+              backgroundColor: "#088F8F",
+              padding: 10,
+              marginBottom: 40,
+              margin: 15,
+              borderRadius: 7,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ${total}</Text>
+              <Text style={{ fontSize: 14, fontWeight: "400", color: "white", marginVertical: 6 }}>Extra charges might apply</Text>
+            </View>
+            <Pressable onPress={() => navigation.navigate("PickUp")}>
+              <Text style={{ fontSize: 17, fontWeight: "600", color: "white" }}>Proceed to pickup</Text>
+            </Pressable>
           </Pressable>
-        </Pressable>
         )
       }
 

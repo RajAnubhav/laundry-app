@@ -1,9 +1,9 @@
-import { 
-  StyleSheet, 
+import {
+  StyleSheet,
   Text,
-  View, 
-  SafeAreaView, 
-  ScrollView, 
+  View,
+  SafeAreaView,
+  ScrollView,
   Pressable
 } from 'react-native'
 import React from 'react'
@@ -24,16 +24,16 @@ const CartScreen = () => {
   const navigation = useNavigation();
   const userUid = auth.currentUser.uid;
   const dispatch = useDispatch();
-  const placeOrder = async() =>{
+  const placeOrder = async () => {
     navigation.navigate("Order");
     dispatch(cleanCart());
     await setDoc(doc(db, "users", `${userUid}`), {
-      order:{...cart},
-      pickUpDetails:route.params,
+      order: { ...cart },
+      pickUpDetails: route.params,
     },
-    {
-      merge: true
-    });
+      {
+        merge: true
+      });
   }
 
   return (
@@ -47,7 +47,7 @@ const CartScreen = () => {
           <>
             <View style={{ padding: 10, flexDirection: "row", alignItems: "center" }}>
               <Ionicons onPress={() => navigation.goBack()} name="arrow-back" size={24} color="#088F8F" />
-              <Text style={{fontWeight: "700", fontSize: 15, color: "#088F8F"}}>Your Bucket</Text>
+              <Text style={{ fontWeight: "700", fontSize: 15, color: "#088F8F" }}>Your Bucket</Text>
             </View>
             <Pressable style={{ backgroundColor: "white", borderRadius: 12, marginLeft: 10, marginRight: 10, padding: 14 }}>
               {cart.map((item, index) => (

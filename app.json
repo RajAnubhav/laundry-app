@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "laundry-app",
+    "name": "fresh laundry",
     "slug": "laundry-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/freshLaundry.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/freshLaundry.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
