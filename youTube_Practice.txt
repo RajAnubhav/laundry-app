@@ -1,5 +1,6 @@
 image slider box -> carousel
 expo location -> location
+lottie-react-native -> using yarn add 
 
 <======= ERROR HANDLING =========>
 1. viewPropTypes error: 
@@ -18,3 +19,4 @@ expo location -> location
   	get ViewPropTypes(): $FlowFixMe{
     		return require('deprecated-react-native-prop-types').ViewPropTypes;
   	},
+		

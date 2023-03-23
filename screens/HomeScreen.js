@@ -18,10 +18,13 @@ import DressItem from '../components/DressItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../ProductReducer';
 import { useNavigation } from '@react-navigation/native';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 
 
 const HomeScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
+  const [items, setItems] = useState([]);
   const total = cart.map((item)=>item.quantity * item.price).reduce((curr, prev)=>curr+prev, 0);
   const navigation = useNavigation();
 
@@ -83,67 +86,74 @@ const HomeScreen = () => {
   const product = useSelector((state) => state.product.product);
   // console.log("product array: ", product);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (product.length > 0) return;
-    const fetchProducts = () => {
-      services.map((service) => dispatch(getProducts(service)));
+
+    const fetchProducts = async() => {
+      const colRef = collection(db, "types");
+      const docsSnap = await getDocs(colRef);
+      docsSnap.forEach((doc)=>{
+        items.push(doc.data());
+      });
+      items?.map((service)=>dispatch(getProducts(service)));
     };
     fetchProducts();
   }, [])
   console.log(product)
 
-  // products data 
-const services = [
-  {
-    id: "0",
-    image: "https://cdn-icons-png.flaticon.com/128/4643/4643574.png",
-    name: "shirt",
-    quantity: 0,
-    price: 10,
-  },
-  {
-    id: "11",
-    image: "https://cdn-icons-png.flaticon.com/128/892/892458.png",
-    name: "T-shirt",
-    quantity: 0,
-    price: 10,
-  },
-  {
-    id: "12",
-    image: "https://cdn-icons-png.flaticon.com/128/9609/9609161.png",
-    name: "dresses",
-    quantity: 0,
-    price: 10,
-  },
-  {
-    id: "13",
-    image: "https://cdn-icons-png.flaticon.com/128/599/599388.png",
-    name: "jeans",
-    quantity: 0,
-    price: 10,
-  },
-  {
-    id: "14",
-    image: "https://cdn-icons-png.flaticon.com/128/9431/9431166.png",
-    name: "Sweater",
-    quantity: 0,
-    price: 10,
-  },
-  {
-    id: "15",
-    image: "https://cdn-icons-png.flaticon.com/128/3345/3345397.png",
-    name: "shorts",
-    quantity: 0,
-    price: 10,
-  },
-  {
-    id: "16",
-    image: "https://cdn-icons-png.flaticon.com/128/293/293241.png",
-    name: "Sleeveless",
-    quantity: 0,
-    price: 10,
-  },
-];
+  // products data {dummy data}
+// const services = [
+//   {
+//     id: "0",
+//     image: "https://cdn-icons-png.flaticon.com/128/4643/4643574.png",
+//     name: "shirt",
+//     quantity: 0,
+//     price: 10,
+//   },
+//   {
+//     id: "11",
+//     image: "https://cdn-icons-png.flaticon.com/128/892/892458.png",
+//     name: "T-shirt",
+//     quantity: 0,
+//     price: 10,
+//   },
+//   {
+//     id: "12",
+//     image: "https://cdn-icons-png.flaticon.com/128/9609/9609161.png",
+//     name: "dresses",
+//     quantity: 0,
+//     price: 10,
+//   },
+//   {
+//     id: "13",
+//     image: "https://cdn-icons-png.flaticon.com/128/599/599388.png",
+//     name: "jeans",
+//     quantity: 0,
+//     price: 10,
+//   },
+//   {
+//     id: "14",
+//     image: "https://cdn-icons-png.flaticon.com/128/9431/9431166.png",
+//     name: "Sweater",
+//     quantity: 0,
+//     price: 10,
+//   },
+//   {
+//     id: "15",
+//     image: "https://cdn-icons-png.flaticon.com/128/3345/3345397.png",
+//     name: "shorts",
+//     quantity: 0,
+//     price: 10,
+//   },
+//   {
+//     id: "16",
+//     image: "https://cdn-icons-png.flaticon.com/128/293/293241.png",
+//     name: "Sleeveless",
+//     quantity: 0,
+//     price: 10,
+//   },
+// ];
 
   return (
     <>
@@ -154,8 +164,13 @@ const services = [
             <Text style={{ fontSize: 18, fontWeight: "800" }}>Home</Text>
             <Text>{displayCurrentAddress}</Text>
           </View>
-          <Pressable style={{ marginLeft: 'auto', marginRight: 15 }}>
-            <Image style={{ width: 40, height: 40, borderRadius: 20 }} source={{ uri: "https://lh3.googleusercontent.com/ogw/AAEL6si3Mg5p8vpCmhJhSnm-xUZWa2auJFBE7o9DVmD80A=s32-c-mo" }} />
+          <Pressable onPress={()=>navigation.navigate("Profile")} style={{ marginLeft: 'auto', marginRight: 15 }}>
+            <Image 
+              style={{ width: 40, height: 40, borderRadius: 20 }} 
+              source={{ 
+                uri: "https://lh3.googleusercontent.com/ogw/AAEL6si3Mg5p8vpCmhJhSnm-xUZWa2auJFBE7o9DVmD80A=s32-c-mo" 
+              }} 
+            />
           </Pressable>
         </View>
         {/* Search Bar */}
