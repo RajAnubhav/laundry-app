@@ -2,6 +2,8 @@ image slider box -> carousel
 expo location -> location
 lottie-react-native -> using yarn add 
 
+code to build the expo app to apk: eas build -p android --profile preview
+
 <======= ERROR HANDLING =========>
 1. viewPropTypes error: 
 	yarn add deprecated-react-native-prop-types
