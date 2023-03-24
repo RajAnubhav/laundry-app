@@ -168,7 +168,7 @@ const HomeScreen = () => {
             <Image
               style={{ width: 40, height: 40, borderRadius: 20 }}
               source={{
-                uri: "https://lh3.googleusercontent.com/ogw/AAEL6si3Mg5p8vpCmhJhSnm-xUZWa2auJFBE7o9DVmD80A=s32-c-mo"
+                uri: "https://cdn-icons-png.flaticon.com/512/1154/1154471.png?w=740&t=st=1679638965~exp=1679639565~hmac=29df3c0bcb5568a583818d91828f1a7217d5e1984daa7718bd652faf257405ec"
               }}
             />
           </Pressable>

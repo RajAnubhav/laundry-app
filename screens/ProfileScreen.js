@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Pressable, Image } from 'react-native'
 import React from 'react'
 import { signOut } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
@@ -18,9 +18,22 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center", marginTop: 35}}>
-      <Pressable style={{marginVertical: 10, alignItems: "center"}}>
-        <Text style={{fontSize: 20, }}>Welcome</Text>
-        <Text style={{fontWeight: "600", fontSize: 25}}>{user.email}</Text>
+
+      <Image
+        style={{
+          width: 300,
+          height: 300,
+          marginTop: 35,
+        }}
+
+        source={{
+          uri: "https://cdn-icons-png.flaticon.com/512/1154/1154471.png?w=740&t=st=1679638965~exp=1679639565~hmac=29df3c0bcb5568a583818d91828f1a7217d5e1984daa7718bd652faf257405ec"
+        }}
+      />
+
+      <Pressable style={{marginVertical: 30, alignItems: "center"}}>
+        <Text style={{fontSize: 30, fontWeight: "600", color: "#27ba9e"}}>Welcome</Text>
+        <Text style={{fontWeight: "300", fontSize: 25}}>{user.email}</Text>
       </Pressable>
       
       <Pressable 
