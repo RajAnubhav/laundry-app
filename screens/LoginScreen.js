@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
 
@@ -12,6 +13,14 @@ const LoginScreen = () => {
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+
+  const saveData = async () =>{
+    try{
+      await AsyncStorage.setItem('DATA', data);
+    }catch(e){
+      // save error
+    }
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -105,7 +114,15 @@ const LoginScreen = () => {
                 marginRight: "auto"
               }}
             >
-              <Text style={{ fontSize: 18, textAlign: "center", color: "white" }}>Login</Text>
+              <Text 
+                style={{ 
+                  fontSize: 18, 
+                  textAlign: "center", 
+                  color: "white" 
+                }}
+              >
+                Login
+              </Text>
             </Pressable>
             <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 30 }}>
               <Text style={{ fontSize: 17, color: "gray" }}>Don't have an account?</Text>

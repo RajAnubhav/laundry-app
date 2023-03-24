@@ -32,7 +32,7 @@ const DressItem = ({ item }) => {
         </View>
         <View>
           <Text style={{ width: 83, fontSize: 17, fontWeight: "500", marginBottom: 7 }}>{item.name}</Text>
-          <Text style={{ width: 60, color: "gray", fontSize: 15 }}>${item.price}</Text>
+          <Text style={{ width: 60, color: "gray", fontSize: 15 }}>₹{item.price}</Text>
         </View>
 
         {cart.some((c) => c.id === item.id) ? (

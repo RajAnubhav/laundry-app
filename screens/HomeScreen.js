@@ -221,7 +221,7 @@ const HomeScreen = () => {
             }}
           >
             <View>
-              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ${total}</Text>
+              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ₹{total}</Text>
               <Text style={{ fontSize: 14, fontWeight: "400", color: "white", marginVertical: 6 }}>Extra charges might apply</Text>
             </View>
             <Pressable onPress={() => navigation.navigate("PickUp")}>

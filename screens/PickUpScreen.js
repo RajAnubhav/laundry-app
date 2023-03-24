@@ -89,9 +89,9 @@ const PickUpScreen = () => {
     }
     if(selectedDate && selectedTime && delivery){
       navigation.replace("Cart",{
-        pickUpDate: selectedDate,
         selectedTime: selectedTime,
         no_Of_days: delivery,
+        // pickUpDate: selectedDate,
       })
     }
   }
@@ -204,7 +204,7 @@ const PickUpScreen = () => {
             }}
           >
             <View>
-              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ${total}</Text>
+              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ₹{total}</Text>
               <Text style={{ fontSize: 14, fontWeight: "400", color: "white", marginVertical: 6 }}>Extra charges might apply</Text>
             </View>
             <Pressable onPress={proceedToCart}>

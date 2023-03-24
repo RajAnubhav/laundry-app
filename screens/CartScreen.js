@@ -114,7 +114,7 @@ const CartScreen = () => {
                       </Text>
                     </Pressable>
                   </Pressable>
-                  <Text style={{ fontSize: 16, fontWeight: "500" }}>${item.price * item.quantity}</Text>
+                  <Text style={{ fontSize: 16, fontWeight: "500" }}>₹{item.price * item.quantity}</Text>
                 </View>
               ))}
             </Pressable>
@@ -144,7 +144,7 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 18, fontWeight: "400" }}
                   >
-                    Rs.{total}
+                    ₹{total}
                   </Text>
                 </View>
 
@@ -191,7 +191,7 @@ const CartScreen = () => {
                   }}
                 />
 
-                <View
+                {/* <View
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
@@ -211,9 +211,9 @@ const CartScreen = () => {
                       color: "#088F8F",
                     }}
                   >
-                    {/* {route.params.pickUpDate} */}
+                    {route.params.pickUpDate}
                   </Text>
-                </View>
+                </View>                                                        */}
 
                 <View
                   style={{
@@ -276,7 +276,7 @@ const CartScreen = () => {
                     To Pay
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {total + 95}
+                  ₹{total}
                   </Text>
                 </View>
               </View>
@@ -301,7 +301,7 @@ const CartScreen = () => {
             }}
           >
             <View>
-              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ${total + 95}</Text>
+              <Text style={{ fontSize: 15, fontWeight: "500", color: "white" }}>{cart.length} items |  ₹{total}</Text>
               <Text style={{ fontSize: 14, fontWeight: "400", color: "white", marginVertical: 6 }}>Extra charges might apply</Text>
             </View>
             <Pressable onPress={placeOrder}>
