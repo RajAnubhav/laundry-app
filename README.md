@@ -1,4 +1,8 @@
 # laundry-app
+<br>
+Download the apk file: 
+<a href="https://github.com/RajAnubhav/laundry-app/raw/master/LaundryAppAPK.apk">Download</a>
+<br>
 ### Login Screen
 <br>
 <p align="center" width="100%">
